@@ -1,0 +1,5 @@
+from flask import Blueprint, request, jsonify, render_template
+from helpers import token_required
+from models import db, User, Contact, contact_schema, contacts_schema
+
+api = Blueprint('api',__name__, url_prefix='/api') #This is the same line that we use in our other routes. Similar to the auth in the other routes.py file and site routes in the other routes.py file one of the attributes sets template folder = templates telling the computer wher ethe template folder is for our site route. However we dont have one of those here. However you can add more attributes to this particular object other than 'api',__name__, url_prefix='/api'. same thing applies to the other routes attribues. Were seperating our interests and keep things apart from one another, some of the attributes are not needed here. Were keeping all of the api's categorized, keeping them in one folder. This line of code means that everytime we write our api route we have to write out '/api' before the slug/very last part of our URL

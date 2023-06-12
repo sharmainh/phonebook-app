@@ -1,0 +1,13 @@
+<!-- {% extends 'base.html' %} Here we want the navbar on this webpage also so we extend  base.html -->
+
+{% block content %}
+    <!-- Form content Here we have our form code in the middle -->
+    <main class="container p-5">
+        <div class="row">
+            <aside class="col-12 col-md-6">
+                 <h2>Create Your Account</h2> <!-- Its going to prompt users to create an account -->
+               {% include 'forms.html' %}   <!-- This is the backwords version of extends, this way. 'include' means were injecting our content into something else -->
+            </aside>
+        </div>
+    </main>
+{% endblock %}

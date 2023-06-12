@@ -1,0 +1,10 @@
+ *,*:before,*::after{ /*All were saying in this code is that we want bootstrap to take up the entire screen */
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+    /* border: 1px solid red; */ 
+}
+
+bogy{
+    padding-top: 50px; /* We added a little padding at the top to move it down just a tad*/
+}

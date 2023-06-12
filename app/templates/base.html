@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<!-- <link rel="stylesheet" href="../static/css/main.css"> TEST THIS LINE OF CODE WITH VIDEO -->
+<title>Phonebook</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+        <div class="container">
+            <a href="{{ url_for('site.home') }}" class="navbar-brand">Phonebook</a> <!--  url_for('site.home') means that when someone clicks on the word Phonebook/phonebook logo as seen in this line of code. It will direct them to the home page -->
+            <button 
+            class="navbar-toggler"
+            type = 'button'
+            data-bs-toggle="'collapse"
+            data-bs-target="#navmenu"
+            ><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id = "navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="{{ url_for('site.home') }}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('site.profile') }}" class="nav-link">Profile</a> <!--  url_for('site.profile') means that when someone clicks on the word Profile as seen in this line of code. It will direct them to the profile page -->
+                    </li>
+                     {% if current_user.is_authenticated %} <!--This is python code, When were injecting python into HTML This code will check current user which is a variable that python responds to from routes.py (click magnifying glass icon on right of VSC to search for variable names and find where they are.). If the user is authenticaed/is logged in then it will run the code below This line of code -->
+                    <li class="nav-item"> 
+                        <a href="{{ url_for('auth.logout') }}" class="nav-link">Logout</a>  <!--If the user is authenticated it will show Logout -->
+                    </li>
+                    {% else %} <!--  Else, if their not authenticated/logged it it will show sign in and sign up -->
+                    <li class="nav-item">
+                        <a href="{{ url_for('auth.signin') }}" class="nav-link">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('auth.signup') }}" class="nav-link">Sign Up</a>
+                    </li>
+                  {% endif %}   <!-- If using if statements you MUST use an endif, However if your using a for loop you must end your code with endfor -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!-- Mysterious Placeholder Comment! -->
+ {% block content %} <!--What this is doing is saying "When Im in index.html and I extend base.html" The computer is pulling all of the content on base.html and applying it around the block content notes in index.html -->
+{% endblock %}
+<!--  Youll end up with the context from the index.html file displaying here at this point. This will happen only when we call index.html not base.html. base.html wont pulling anything. All of the data above block data will not render in browser. You can extend other frames if you wanted to besides the frames were extending for this project -->
+
+<!-- You CANT use block content outside of flask or in regular files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
