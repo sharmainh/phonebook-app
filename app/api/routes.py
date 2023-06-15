@@ -85,6 +85,6 @@ def delete_contact(current_user_token, id):
 
 # quit and run flask again, create a new delete request in insomnia (see phonebook application) , Enter Headers information including token id, url etc. send then it will show you who was deleted. go to get contacts to see deleted user
 
-# AFTER COMPLETING EVERYTHING AND ITS TIME TO SUBMIT THE PROJECT 1st: deactivate conda otherwise it will cause problems. also in requirements.txt python - dotenv version ==o0.19.0 does not work with render DELETE THE VERSION NO MATTER WHAT IT IS THE VERSION THAT IS COMPATIBLE WILL BE ADDED AUTOMATICALLY. Once thats done, update github type 'git add .' in terminal, 'git commit -m "updating my render"'
+# AFTER COMPLETING EVERYTHING AND ITS TIME TO SUBMIT THE PROJECT 1st: deactivate conda otherwise it will cause problems. also in requirements.txt python - dotenv version ==o0.19.0 does not work with render DELETE THE VERSION NO MATTER WHAT IT IS THE VERSION THAT IS COMPATIBLE WILL BE ADDED AUTOMATICALLY. Once thats done, update github type 'git add .' in terminal, 'git commit -m "updating my req for render"', git push - u origin main
 
 
