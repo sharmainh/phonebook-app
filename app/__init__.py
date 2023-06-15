@@ -47,7 +47,7 @@ migrate = Migrate(app, root_db) # We are applying this to the application that i
 
 #CREATEING VIRTUAL ENVIRONMENT STEPS! you can always use quit() command in terminal if need to start over quit()
 # Step One: type 'python3 -m venv venv' in a cleared/new terminal (this should be the same on windows) press ENTER
-#(This means were going to call our virtual environment)venv is short for virtual environment. Then you will see a venv folder appear, with other folders, and files etc. When ou call pip, things happen automatically that you dont have  to understand, BUT theres alot of magical stuff inside of our Library and venv, which is helping us communicate with the servers when we put it on there and very directly say install these things
+#(This means were going to call our virtual environment)venv is short for virtual environment. Then you will see a venv folder appear, with other folders, and files etc. When you call pip, things happen automatically that you dont have  to understand, BUT theres alot of magical stuff inside of our Library and venv, which is helping us communicate with the servers when we put it on there and very directly say install these things
 
 # Step Two: (This is the windows version you type in the terminal) 'venv\Scripts\activate' Press ENTER You can use a different folder name than venv if you want IF you do change the lines of code that have venv to the name of the folder you want to use (This is the Mac version) 'source venv/bin/activate' ENTER - What this is doing is turning the venv on it is actually saying "I want to operate my app inside of this virtual environment" you will ALSO se venv in the terminal. This looks very simialar to the conda environment because they do very similar things
 
@@ -65,8 +65,17 @@ migrate = Migrate(app, root_db) # We are applying this to the application that i
 #'pip freeze > requirements.txt' This will load a documen(txt file) on the right in the explorer area and you can see all of the things installed. Alot of the things you see in the txt file are already installed on your computer. Instead of all of the installs you can DELETE them and paste whats needed for example https://yummy-seeder-cf8.notion.site/Virtual-Environment-ef5389de15884ae0aa999d1f9dd7c7fe copy and paste the list of things to install via Pip.
 #The requirements.txt document is what interacts with the venv folder. When we end up hosting this Heroku/The cloud platform were using looks for requirements.txt document to figure out what to install, then the app will run just fine.
 
+#Migrations process/Transfer Data to DATABASE STEPS AFTER SETTING UP THE ABOVE STEPS (You should have migrations folder, VENV FOLDER, and .ENV UP TO THIS POINT)
 
+# STEP 1 in the terminal type 'flask db init' return (were initializing the database here, you will also a new migrations folder) (if theres an ERROR: Attribute Eror json Encoder- from json import JSONEncoder, if db cannot be found exit all terminals in VSC CTRL-C, shut down/refresh application then try again)
 
+#STEP 2 in the terminal type 'flask db migrate' return (this will start moving things and getting things ready to share, alembic comes into play)
+
+#STEP 3 in the terminal type 'flask db upgrade' (this will put stuff in the database)
+
+#STEP 4 'flask run' to view webpage/run application
+
+#After running application to test for bugs, head to database/elephantsql in this case and check 'table queries', 'user' table to make sure a token was created and proof that password is encrypted
 
 
 

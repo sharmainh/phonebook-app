@@ -3,6 +3,7 @@
 from functools import wraps # functools comes from python 
 import secrets # similarly to our models page
 from flask import request, jsonify, json # json is a part of javascript. json is content that javascript is able to parse really easily. Its very similar to the way that python works through stuff. SO we will be able to use python to traverse that data as well AND JSON is a very common/popular way for data to be delivered that way as developers were able to work through it.
+from json import JSONEncoder
 import decimal
 
 from models import User
@@ -36,4 +37,16 @@ class JSONEncoder(json.JSONEncoder):
         if isinstance(obj, decimal.Decimal): #This is checking to see if the object is a certain datatype
             return str(obj) #and if it is the coreect data type were going to make a string version of it so that we can use it in other places
         return super(JSONEncoder,self).default(obj) # if its not the correct data type we return the object itself
+
+# To test contact code you can use insomnia, Create a new request within the application folder. Set the method to 'POST', and the text to JSON. Create a dictionary with sample contact information in the console that includes the names of the keys in the code for example (see above)
+#  {
+	# "address": "1 Main Street Alaska",
+# 	"email": "applesandoranges@can.com",
+# 	"name": "Sharmain",
+# 	"phone_number": "555-555-5555" 
+# }
+#Then to test the code in insomnia 'flask run' to retrieve the url http://127.0.0.1:5000/api/contacts must include api, and contacts is from @api.route('/contacts) see above. Click send  if it returns "token required" thats good, it shows the program is working properly. helpers.pyy has token required information.
+
+#You can check the headers tab in insomnia to make sure it says content-type(left)  (right)application/json if not you can add that yourself. The add a new header x-access-token(left side) (right side) Bearer (token id) You can retrieve token id from database or sign in to user account (see insomnia phonebook app for example)
+# See line 17 to understand x-access-token. request.headers[x-access-token] is the same as request.json except instead of looking at JSON in insomnia were looking at header tab. The key is x-access-token which will bring back Bearer (token id) (see insomnia for bearer etc.) looking at line 17, it will split bearer and only take the access token and save it to 'token' variable. Click send and you will see an id will be created in the dictionary automatically because when models gets instantiated/class Contact is called self.id will run and create a secret id number that is unique. This means we sent data and can now go to the database click 'table inqueries', 'contact' 'execute' The user token will be who created the account because it matches with the profile id
 

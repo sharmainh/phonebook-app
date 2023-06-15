@@ -18,8 +18,8 @@ class Config(): # Our class config
 
     FLASK_APP = os.getenv('FLASK_APP')
     FLASK_ENV = os.getenv('FLASK_ENV')
-    SECRET_KEY = os.environ.get('SECRET_KEY') # This is for security purposes this line of code can also be written like this(SEE BELOW)
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'Sharmain' # This is for security purposes this line of code can also be written like this(SEE BELOW)
     # SECRET_KEY = os.environ.get('SECRET_KEY') or 'Ryan will never get access to my CSS' You can type whatever you want in the string
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or 'sqlite:///' + os.path.join(basedir, 'app.db') # We added or 'sqlite:///' to allow us to use other SQL languages for our databases just in case it doesnt work right. 
     #Here we are using SQLALCHEMY to interact with our database later on 
-    SQLALCHEMY_TRACK_NOTIFICATIONS = False
+    SQLALCHEMY_TRACK_MOIFICATIONS = False

@@ -15,7 +15,7 @@ def signup():
         if request.method == 'POST' and form.validate_on_submit():
             email = form.email.data # The user enters their email on the forms.html first then this will go to the UserLoginForm (see above) it will take the email, specifically the data from the email section of our user login form (see forms.py), check the parameters in forms.py to see if what the user entered counts as an email. If it does we will save it to THIS email variable above. SAME THING APPLIES TO password below
             password = form.password.data
-            print(email, password) # when testing the code DONT use personal information as long as you use email format the code will work
+            print(email, password) # when testing the code DONT use personal information as long as you use email format the code will work. This line of code is ONLY USED WHEN YOUR TESTING THE APPLICATION BECAUSE IT ACTUALLY PRINTS THE USERS EMAIL AND PASSWORD. DELETE THIS LINE WHEN FINISHED WITH THE APPLICATION
 
             user = User(email, password = password) # inside the user class we will take the password above and set it equal to this password, were passing data from place to place. Then this email gets saved into the database in models.py
 
@@ -30,7 +30,7 @@ def signup():
         #What if what the user inputs doesnt work!? in our Try, then we catch/except no if else statement is required (see below)
     except:
         raise Exception('Invalid Form Data: Please Check your Form') # As long as users on this webpage its going to keep sending a message if the information is incorrect
-    return render_template('sign_in.html', form=form) #Even though theres a problem, when we call the sign up page it will still render template for sign_up.html
+    return render_template('sign_up.html', form=form) #Even though theres a problem, when we call the sign up page it will still render template for sign_up.html
 
 @auth.route('/signin', methods = ['GET', 'POST'])
 def signin():
